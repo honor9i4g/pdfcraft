@@ -10,8 +10,11 @@ workspace = true
 
 [dependencies]
 pdfcraft-cos = { workspace = true }
-# Glyph outlines of the bundled script font (typed signatures); already in the tree via egui.
-skrifa = "0.44"
-# Arabic shaping for text written into PDFs; already in the tree via egui, on the same read-fonts.
-harfrust = "0.12"
+# Glyph outlines of the bundled script font (typed signatures).
+# harfrust 0.14 + read-fonts 0.45 + skrifa 0.48 must move together: harfrust re-exports
+# read_fonts::types, so a split version gives two incompatible FontRef types (E0308).
+skrifa = { workspace = true }
+# Arabic shaping for text written into PDFs.
+harfrust = { workspace = true }
+read-fonts = { workspace = true }
 unicode-bidi = "0.3"
